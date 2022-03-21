@@ -13,6 +13,7 @@ img {
 :root {
   --primary-color: #00ffff;
   --secondary-color: #10a5f5;
+  --column: 10;
 }
 
 /* General */
@@ -39,6 +40,9 @@ img {
   background-color: #fff;
 }
 
+.d-none {
+  display: none;
+}
 /* Header */
 .head-nav {
   display: flex;
@@ -85,8 +89,8 @@ img {
 
 .card {
   border: 1px solid #000;
-  height: calc(100% / 10);
-  width: calc(100% / 10);
+  height: calc(100% / var(--column));
+  width: calc(100% / var(--column));
   padding: 15px 5px;
   display: flex;
   justify-content: center;

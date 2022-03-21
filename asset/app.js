@@ -14,25 +14,32 @@ Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dat
 Le validazioni e i controlli possiamo farli anche in un secondo momento.
 */
 
-let container = document.getElementById('container');
+//bonus
+//creo evento al btn
+let btn = document.getElementById('btn');
 
-//Stampo numeri da min a max
+btn.addEventListener('click', difficult);
+
+let diff = document.getElementById('difficult');
+let container = document.getElementById('container');
 let min = 1;
 let max = 100;
+// Stampo numeri da min a max
+console.log(max);
 
-for (let i = min; i <= max; i++) {
-    //a ogni giro creo un div
-    let card = document.createElement('div');
-    //ad ogni div assegno la classe css creata
-    card.classList.add('card');
-    //in ogni div stampo l'indice
-    card.innerHTML += `${i}`;
-    //appendo il div creato al container
-    container.appendChild(card);
-    
-    //creo evento
-    card.addEventListener('click',selected);
-}
+// for (let i = min; i <= max; i++) {
+//     //a ogni giro creo un div
+//     let card = document.createElement('div');
+//     //ad ogni div assegno la classe css creata
+//     card.classList.add('card');
+//     //in ogni div stampo l'indice
+//     card.innerHTML += `${i}`;
+//     //appendo il div creato al container
+//     container.appendChild(card);
+
+//     //creo evento
+//     card.addEventListener('click',selected);
+// }
 
 
 
@@ -42,5 +49,36 @@ function selected() {
     this.classList.add('selected');
 }
 
+//creo funzione che cambia var css a seconda del value della select
 
-
+function difficult() {
+    let placeholder = document.getElementById('placeholder');
+    placeholder.className = 'd-none';
+    let diff = document.getElementById('difficult');
+    let x = diff.value;
+    if (x == 'hard') {
+        document.documentElement.style.setProperty('--column', '7');
+        max = 49;
+    } else if (x == 'normal'){
+        document.documentElement.style.setProperty('--column', '9');
+        max = 81;
+    } else {
+        document.documentElement.style.setProperty('--column', '10');
+        max = 100;
+    }
+    let min = 1;
+    for (let i = min; i <= max; i++) {
+        //a ogni giro creo un div
+        let card = document.createElement('div');
+        //ad ogni div assegno la classe css creata
+        card.classList.add('card');
+        //in ogni div stampo l'indice
+        card.innerHTML += `${i}`;
+        //appendo il div creato al container
+        container.appendChild(card);
+    
+        //creo evento
+        card.addEventListener('click',selected);
+    }
+    
+}
