@@ -68,3 +68,44 @@ img {
 #difficult {
   margin: 0 10px;
 }
+
+/* Main */
+.hero {
+  background-color: var(--primary-color);
+  padding: 60px 0;
+}
+
+.main-container {
+  margin: 0px auto;
+  width: 60%;
+  border: 1px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #000;
+  height: calc(100% / 10);
+  width: calc(100% / 10);
+  padding: 15px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected {
+  background-color: var(--secondary-color);
+}
+
+/* Footer */
+.foot {
+  padding: 20px 0 10px 0;
+}
+
+.foot span {
+  color: var(--primary-color);
+}
+
+.foot a {
+  color: var(--secondary-color);
+}
