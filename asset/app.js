@@ -17,8 +17,10 @@ Le validazioni e i controlli possiamo farli anche in un secondo momento.
 //bonus
 //creo evento al btn
 let btn = document.getElementById('btn');
+let btnReset = document.getElementById('btn_reset');
 
 btn.addEventListener('click', difficult);
+btnReset.addEventListener('click',reset)
 
 let diff = document.getElementById('difficult');
 let container = document.getElementById('container');
@@ -81,4 +83,9 @@ function difficult() {
         card.addEventListener('click',selected);
     }
     
+}
+
+//funzione reset
+function reset() {
+    return history.go(0);
 }

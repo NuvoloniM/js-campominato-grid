@@ -36,6 +36,16 @@ img {
   border: 1px solid #fff;
 }
 
+.btn-reset {
+  background-color: red;
+  color: #000;
+}
+
+.btn-reset:hover {
+  background-color: #000;
+  color: red;
+}
+
 .bg-white {
   background-color: #fff;
 }
