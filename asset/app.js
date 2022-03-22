@@ -43,14 +43,6 @@ console.log(max);
 //     card.addEventListener('click',selected);
 // }
 
-
-
-//creo funzione che assegna all'elemento selezionato la classe selected 
-function selected() {
-    //funzione che, collegata ad un evento, cambia classe all'elemento(this) cliccato
-    this.classList.add('selected');
-}
-
 //creo funzione che cambia var css a seconda del value della select
 
 function play() {
@@ -63,26 +55,31 @@ function play() {
     container.classList.remove('d-none');
     let diff = document.getElementById('difficult');
     let x = diff.value;
+    let array = [];
     
     if (x == 'hard') {
         document.documentElement.style.setProperty('--column', '7');
         max = 49;
+        array = arrayCreation(1,49);
     } else if (x == 'normal'){
         document.documentElement.style.setProperty('--column', '9');
         max = 81;
+        array = arrayCreation(1,81);
     } else {
         document.documentElement.style.setProperty('--column', '10');
         max = 100;
+        array = arrayCreation(1,100);
     }
-    let min = 1;
-    for (let i = min; i <= max; i++) {
+    // let min = 1;
+    let array2 = shuffleArray(array);
+    for (let i = 0; i < max; i++) {
         //a ogni giro creo un div
         let card = document.createElement('div');
         //ad ogni div assegno la classe css creata
         card.classList.add('card');
         //in ogni div stampo un numero casuale tra min e max
-        let casualN = randomInt(min,max); 
-        card.innerHTML += `${casualN}`;
+        // let casualN = randomInt(min,max); 
+        card.innerHTML += `${array2[i]}`;
         //appendo il div creato al container
         container.appendChild(card);
     
@@ -97,9 +94,35 @@ function reset() {
     return history.go(0);
 }
 
-//Funzione per randomNumero
-function randomInt(min,max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() *(max-min) + min);
+//creo funzione che assegna all'elemento selezionato la classe selected 
+function selected() {
+    //funzione che, collegata ad un evento, cambia classe all'elemento(this) cliccato
+    this.classList.add('selected');
 }
+
+
+//creo array da min a max 
+function arrayCreation(min,max) {
+   let array = []; 
+   for (let i = min; i <= max; i++) {
+       array.push(i);
+   }
+   return array
+}
+
+//funzione shuffle
+function shuffleArray(array){
+    array.sort(()=> Math.random() - 0.5);
+    return array
+}
+//The Fisher-Yates algorithm 
+// function shuffle(array) {
+    // creo un ciclo for che camminerà sull’array in ordine inverso.
+    // for (let i = array.length - 1; i > 0; i--) {
+    //     //genero indice casuale compreso tra 0(min) e i(lunghezza array) 
+    //     const j = Math.floor(Math.random() * (i + 1));
+    //     //scambio gli elementi l'uno con l'altro
+    //     [array[i], array[j]] = [array[j], array[i]];
+    // }
+    // return array;
+// }
