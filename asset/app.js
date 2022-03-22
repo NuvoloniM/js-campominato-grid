@@ -19,7 +19,7 @@ Le validazioni e i controlli possiamo farli anche in un secondo momento.
 let btn = document.getElementById('btn');
 let btnReset = document.getElementById('btn_reset');
 
-btn.addEventListener('click', difficult);
+btn.addEventListener('click', play);
 btnReset.addEventListener('click',reset)
 
 let diff = document.getElementById('difficult');
@@ -53,11 +53,17 @@ function selected() {
 
 //creo funzione che cambia var css a seconda del value della select
 
-function difficult() {
+function play() {
+    //Reset del contenuto interno per non far accumulare più griglie
+    container.innerHTML = '';
+    //Nascondi il placeholder o home di gioco 
     let placeholder = document.getElementById('placeholder');
     placeholder.className = 'd-none';
+    //fai apparire la griglia
+    container.classList.remove('d-none');
     let diff = document.getElementById('difficult');
     let x = diff.value;
+    
     if (x == 'hard') {
         document.documentElement.style.setProperty('--column', '7');
         max = 49;
@@ -74,8 +80,9 @@ function difficult() {
         let card = document.createElement('div');
         //ad ogni div assegno la classe css creata
         card.classList.add('card');
-        //in ogni div stampo l'indice
-        card.innerHTML += `${i}`;
+        //in ogni div stampo un numero casuale tra min e max
+        let casualN = randomInt(min,max); 
+        card.innerHTML += `${casualN}`;
         //appendo il div creato al container
         container.appendChild(card);
     
@@ -88,4 +95,11 @@ function difficult() {
 //funzione reset
 function reset() {
     return history.go(0);
+}
+
+//Funzione per randomNumero
+function randomInt(min,max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() *(max-min) + min);
 }

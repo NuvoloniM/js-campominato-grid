@@ -59,6 +59,7 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
+  height: 10vh;
 }
 
 .logo {
@@ -86,7 +87,9 @@ img {
 /* Main */
 .hero {
   background-color: var(--primary-color);
-  padding: 60px 0;
+  height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .main-container {
@@ -95,6 +98,11 @@ img {
   border: 1px solid #000;
   display: flex;
   flex-wrap: wrap;
+  align-self: center;
+}
+
+.d-none {
+  display: none;
 }
 
 .card {
@@ -113,7 +121,9 @@ img {
 
 /* Footer */
 .foot {
-  padding: 20px 0 10px 0;
+  height: 10vh;
+  display: flex;
+  align-items: center;
 }
 
 .foot span {
